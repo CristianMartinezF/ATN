@@ -14,7 +14,7 @@ def compute_metrics(y_true, y_pred):
     y_true = y_true[mask]
     y_pred = y_pred[mask]
     if len(y_true) < 2:
-        return {"R": np.nan, "R2": np.nan, "RMSE": np.nan, "MAE": np.nan}
+        return {"R": np.nan, "R2": np.nan}
     ss_res = np.sum((y_true - y_pred) ** 2)
     ss_tot = np.sum((y_true - np.mean(y_true)) ** 2)
     r2 = 1 - ss_res / ss_tot if ss_tot > 0 else np.nan
@@ -23,9 +23,8 @@ def compute_metrics(y_true, y_pred):
         R = np.corrcoef(y_true, y_pred)[0, 1]
     else:
         R = np.nan
-    rmse = np.sqrt(np.mean((y_true - y_pred) ** 2))
-    mae = np.mean(np.abs(y_true - y_pred))
-    return {"R": R, "R2": r2, "RMSE": rmse, "MAE": mae}
+  
+    return {"R": R, "R2": r2}
 
 def format_coeff(val):
     try:
@@ -40,8 +39,6 @@ def add_model_row(rows, name, eq, yhat, priority=False):
         "Ecuación": eq,
         "R": m["R"],
         "R²": m["R2"],
-        "RMSE": m["RMSE"],
-        "MAE": m["MAE"],
         "_yhat": yhat,
         "_prio": priority
     })
@@ -286,15 +283,12 @@ tabla = pd.DataFrame([
         "Modelo": r["Modelo"],
         "Ecuación": r["Ecuación"],
         "R": r["R"],
-        "R²": r["R²"],
-        "RMSE": r["RMSE"],
-        "MAE": r["MAE"]
+        "R²": r["R²"]
     } for r in rows["resultados"]
 ])
 
-# Ordena por mejor R² y RMSE
-tabla = tabla.sort_values(by=["R²","RMSE"], ascending=[False, True])
-st.subheader("Métricas")
+tabla = tabla.sort_values(by=["R²"], ascending=[False])
+st.subheader("Métricas (R, R²)")
 st.dataframe(tabla, use_container_width=True)
 
 # Mostrar ecuaciones limpias
@@ -326,6 +320,7 @@ else:
         fig_i = plt.figure()
         plt.scatter(x, y, label="Datos", s=20)
         plt.plot(x, yhat, label=r["Modelo"])
+
         plt.xlabel("x"); plt.ylabel("y"); plt.title(r["Modelo"]); plt.grid(True); plt.legend()
         st.pyplot(fig_i)
 
