@@ -189,6 +189,29 @@ st.title("Ajuste de Curvas (Proyecto)")
 st.caption("Modelos: Lineal, Exponencial, Geométrica, Hiperbólico, Polinómica (≤4), Media Móvil, Exponencial Asintótico, Logístico, Logarítmico y Potencial.")
 
 with st.sidebar:
+    st.header("Navegación")
+    pagina = st.radio("Ir a:", ["Aplicación", "Acerca de"], index=0)
+
+if pagina == "Acerca de":
+    st.subheader("Acerca de")
+    st.markdown("""
+**Versión:** 1.0  
+**Aplicación:** ATN — Ajuste de Curvas (Streamlit)  
+**Autores:** Cristian Martinez y Karolay Mizzar              
+**Asignatura:** Análisis de Técnicas Numéricas               
+**Universidad:** CECAR          
+**Repositorio:** *[https://github.com/CristianMartinezF/ATN.git]*
+
+Esta herramienta permite evaluar 10 modelos de ajuste de curvas y reporta **R** y **R²** según la rúbrica del curso.  
+Carga tus datos `x,y`, selecciona modelos y compara visualmente las curvas (opción de **superponer**).
+    """)
+    st.stop()  # No ejecutar el resto si estamos en "Acerca de"
+
+
+
+
+
+with st.sidebar:
     st.header("1) Datos")
     up = st.file_uploader("Sube un CSV con columnas x,y", type=["csv"])
     if st.button("Cargar ejemplo"):
