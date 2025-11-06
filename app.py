@@ -197,7 +197,7 @@ if pagina == "Acerca de":
     st.markdown("""
 **Versión:** 1.0  
 **Aplicación:** ATN — Ajuste de Curvas (Streamlit)  
-**Autores:** Cristian Martinez y Karolay Mizzar              
+**Autores:** Cristian Martinez, Karolay Mizzar y Alejandro Chavez             
 **Asignatura:** Análisis de Técnicas Numéricas               
 **Universidad:** CECAR          
 **Repositorio:** *[https://github.com/CristianMartinezF/ATN.git]*

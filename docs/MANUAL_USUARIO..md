@@ -2,7 +2,7 @@
 
 **Versión:** 1.0  
 **Aplicación:** ATN — Ajuste de Curvas (Streamlit)  
-**Autores:** Cristian Martinez y Karolay Mizzar
+**Autores:** Cristian Martinez, Karolay Mizzar y Alejandro Chavez  
 **Asignatura:** Análisis de Técnicas Numéricas  
 **Universidad:** CECAR 
 **Repositorio:** *[https://github.com/CristianMartinezF/ATN.git]*
@@ -123,5 +123,5 @@ ATN/
 
 ## 9. Contacto
 
-- Autores: *Cristian Martinez; Karolay Mizzar*  *Cristian.martinezf@cecar.edu.co; Karolay.mizzar@cecar.edu.co
+- Autores: *Cristian Martinez; Karolay Mizzar*; Alejandro Chavez   Cristian.martinezf@cecar.edu.co; Karolay.mizzar@cecar.edu.co; Alejandro.chavez@cecar.edu.co
 - Docente: *Carlos Cohen*
